@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= gravatar_tag @post.user.email, size: 50 %> <%= image_tag @post.user.avatar.url, size: 50%>
+</p>
+  <p>
+    by <%= @post.user.username %>
+  </p>
+</p>
+
+<p>
+  <strong>Blog entry:</strong>
+  <%= image_tag @post.user.avatar.url, size: 50 %>
+  <%= @post.blog_entry %>
+
+</p>
+
+<<p>
+    <%= link_to 'Edit', edit_post_path(@post) %>
+</p>
+
+<div id="comments">
+
+    <%= render 'comments/form', comment: @comment %>
+    <% @post.comments.each do |comment| %>
+    <p>
+	    <%= gravatar_tag comment.user.email, size: 50 %> <%= image_tag comment.user.avatar.url, size: 50%><%= comment.user.username %> said...<br />
+	    <%= comment.comment_entry %>
+   </p>
+    <% end %>
+
+
+</div>
+
+<p>
+    <%= link_to 'Back', posts_path %>
+</p>
