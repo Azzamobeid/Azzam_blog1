@@ -23,7 +23,7 @@
       <tr>
         <td><%= post.title %></td>
         <td>by <%= post.user.username %></td>
-        <td><%= post.blog_entry %></td>
+        <td><%= image_tag post.avatar.url %><%= post.blog_entry %></td>
         <td><%= post.created_at.in_time_zone("America/Chicago") %></td>
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
